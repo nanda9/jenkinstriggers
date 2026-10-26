@@ -1,17 +1,17 @@
 name: Build WF test on bugfix902 branch
 on:
   schedule:
-    - cron: '10 10 * * 1-5'
+    - cron: '11 10 * * 1-5'
   
   workflow_dispatch:
 
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
-  pull_request:
-    branches:
-      - main
+  # pull_request:
+  #   branches:
+  #     - main
 
 jobs:
   Build:
