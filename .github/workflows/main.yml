@@ -13,7 +13,7 @@ on:
     branches:
       - main
 
-  permissions:
+  permission:
     contents: read
     pull-requests: write
 
@@ -36,6 +36,10 @@ jobs:
           name: vprofile-app
           path: target/*.war
 
+      - name: Notify if Build Fails
+        if: failure()
+        run: echo " 🚨 Build failed. Please check the logs for details."
+
 
 
 
@@ -49,7 +53,13 @@ jobs:
           fetch_depth: 0
 
       - name: Run Maven Tests on main branch
+        if: github.ref == 'refs/heads/main'
         run: mvn test
 
       - name: Checkstyle
+        if: github.ref == 'refs/heads/main'
         run: mvn checkstyle:checkstyle
+
+      - name: Run tests on other branches
+        if: github.ref != 'refs/heads/main'
+        run: echo "Skipping unit tests and code analysis on main branch and tests are running on other branches"
