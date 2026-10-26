@@ -1,6 +1,10 @@
 name: Build WF test on main branch
 on:
-  push:
+#   push:
+#     branches:
+#       - main
+
+  pull_request:
     branches:
       - main
 
@@ -10,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code on main branch
         uses: actions/checkout@v7
+        with:
+          fetch_depth: 0
 
       - name: Maven Build
         run: mvn clean install
@@ -23,6 +29,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
+        with:
+          fetch_depth: 0
 
       - name: Run Maven Tests on main branch
         run: mvn test
