@@ -64,6 +64,7 @@ jobs:
         run: echo "Skipping unit tests and Checkstyle because this is not a main-branch run."
 
   
+  
   Security_Scan:
     runs-on: ubuntu-latest
     needs: Build
@@ -78,19 +79,16 @@ jobs:
         with:
           scan-type: 'fs'
           scan-ref: '.'
-          format: 'json'
-          output: 'trivy-results.json'
+          format: 'table'
+          output: 'trivy-results.txt'
           exit-code: '0'
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
-      - name: Verify Trivy Results
-        run: ls -l trivy-results.json
-
       - name: Upload Trivy Scan Results as artifact
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: trivy-scan-results
-          path: trivy-results.json
+          path: trivy-results.txt
           if-no-files-found: error
+
