@@ -1,9 +1,8 @@
 # Prerequisites
 #
-- JDK 11 
+- JDK 21
 - Maven 3 
 - MySQL 8
-- JDK 21
 
 # Technologies 
 - Spring MVC
