@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v40
+        uses: actions/checkout@v7
 
       - name: Maven Build
-        run: maven clean install
+        run: mvn clean install
 
 
 
@@ -22,7 +22,7 @@ jobs:
     needs: Build
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Run Maven Tests on main branch
         run: mvn test
