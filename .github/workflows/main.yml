@@ -1,12 +1,18 @@
 name: Build WF test on main branch
 on:
-#   push:
-#     branches:
-#       - main
+  push:
+    branches:
+      - main
 
   pull_request:
     branches:
       - main
+
+  workflow_dispatch:
+
+
+  schedule:
+    - cron: '10 14 * * 1-5'
 
 jobs:
   Build:
