@@ -2,7 +2,7 @@ name: Build WF test on main branch
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   Build:
