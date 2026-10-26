@@ -1,8 +1,8 @@
-name: Build WF test on main branch
+name: Build WF test on bugfix902 branch
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
   pull_request:
     branches:
